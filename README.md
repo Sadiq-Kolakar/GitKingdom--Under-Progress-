@@ -57,4 +57,4 @@ Create a new Web Service hooked to the `render.yaml` configuration. Inject the P
 
 ## Credits
 Built by **Sadiq Kolakar** | SIT Tumakuru | Batch 2024–2028  
-Reviewed by ChatGPT, Gemini, Grok, Claude.
+ 
