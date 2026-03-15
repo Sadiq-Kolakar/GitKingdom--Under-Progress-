@@ -53,22 +53,19 @@ router.post('/claim', authenticate, async (req, res) => {
       return res.status(400).json({ error: 'User has already claimed a kingdom' });
     }
 
-    const { placeInFrontier } = require('../services/placementEngine');
-    
-    // Instead of taking position from req.body, use placement engine
-    const position = await placeInFrontier();
+    const angle = Math.random() * 2 * Math.PI;
+    const radius = 700 + Math.random() * 80;
+    const position = {
+      x: Math.round(2000 + radius * Math.cos(angle)),
+      y: Math.round(2000 + radius * Math.sin(angle))
+    };
 
     const accessToken = githubService.decryptToken(user.accessToken);
     const githubData = await githubService.fetchFullGithubData(user.username, accessToken);
     
-    let kingdom = existing;
+    let kingdom = await Kingdom.findOne({ username: req.user.username });
     if (!kingdom) {
-      kingdom = new Kingdom({
-        username: user.username,
-        position,
-      });
-    } else {
-      kingdom.username = user.username;
+      return res.status(404).json({ error: 'Kingdom not found' });
     }
 
     kingdom.isClaimed = true;

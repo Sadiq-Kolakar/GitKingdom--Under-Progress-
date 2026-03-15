@@ -1,0 +1,29 @@
+:root {
+  --parchment: #f4ecd8;
+  --dark-parchment: #d3bd9a;
+  --aged-ink: #3b2f21;
+  --gold: #d4af37;
+  --background: #0D0D0E;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--parchment);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+.parchment-text {
+  font-family: 'Cinzel', serif;
+}
